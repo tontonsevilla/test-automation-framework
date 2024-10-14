@@ -1,0 +1,2 @@
+2024-10-14 17:19:04.956 +08:00 [WRN] Hello this is a warning message. 
+ 

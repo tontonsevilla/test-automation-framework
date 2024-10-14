@@ -1,3 +1,5 @@
+using TestAutomationFramework.Core.WebUI.Reports;
+
 namespace TestAutomationFramework.DemoUI.Test
 {
     public class Tests
@@ -5,6 +7,8 @@ namespace TestAutomationFramework.DemoUI.Test
         [SetUp]
         public void Setup()
         {
+            Logging logging = new Logging();
+            logging.Warning("Hello this is a warning message.");
         }
 
         [Test]
