@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestAutomationFramework.Core.WebUI.Abstraction;
 
 namespace TestAutomationFramework.Core.WebUI.Params
 {
-    public class DefaultVariables
+    public class DefaultVariables : IDefaultVariables
     {
         public string ReportPath
         {

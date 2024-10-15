@@ -1,20 +1,21 @@
 ﻿using Serilog;
 using Serilog.Core;
-using TestAutomationFramework.Core.WebUI.Params;
+using TestAutomationFramework.Core.WebUI.Abstraction;
 
 namespace TestAutomationFramework.Core.WebUI.Reports
 {
-    public class Logging
+    public class Logging : ILogging
     {
+        private readonly IDefaultVariables _defaultVariables;
         LoggingLevelSwitch loggingLevelSwitch;
 
-        public Logging()
+        public Logging(IDefaultVariables defaultVariables)
         {
-            DefaultVariables defaultVariables = new DefaultVariables();
+            _defaultVariables = defaultVariables;
 
             loggingLevelSwitch = new LoggingLevelSwitch(Serilog.Events.LogEventLevel.Debug);
             Log.Logger = new LoggerConfiguration().MinimumLevel.ControlledBy(loggingLevelSwitch)
-                .WriteTo.File(defaultVariables.LogPath, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {NewLine} {Exception}")
+                .WriteTo.File(_defaultVariables.LogPath, outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj} {NewLine} {Exception}")
                 .Enrich.WithThreadName().CreateLogger();
         }
 
