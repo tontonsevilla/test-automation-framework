@@ -25,5 +25,13 @@ namespace TestAutomationFramework.Core.WebUI.Params
                 return ReportPath + "\\log.txt";
             }
         }
+
+        public string FrameworkSettingsJsonPath
+        {
+            get
+            {
+                return @$"{System.IO.Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName}\Resources\frameworkSettings.json";
+            }
+        }
     }
 }

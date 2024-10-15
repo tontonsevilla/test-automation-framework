@@ -10,6 +10,10 @@ namespace TestAutomationFramework.DemoUI.Test
         public void Setup()
         {
             var serviceProvider = ContainerConfig.ConfigureServices();
+            
+            var globalProperties = serviceProvider.GetRequiredService<IGlobalProperties>();
+            globalProperties.Configuration();
+
             var logging = serviceProvider.GetRequiredService<ILogging>();
             logging.Warning("Hello this is a warning message.");
             logging.Information("Hello this is an information message.");
