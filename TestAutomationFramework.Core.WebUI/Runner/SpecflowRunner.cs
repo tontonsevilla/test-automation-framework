@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using TechTalk.SpecFlow;
+﻿using Reqnroll;
 using TestAutomationFramework.Core.WebUI.DIContainer;
 
 namespace TestAutomationFramework.Core.WebUI.Runner

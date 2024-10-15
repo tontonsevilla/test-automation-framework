@@ -14,7 +14,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-    <PackageReference Include="SpecFlow.NUnit" Version="3.9.74" />
+    <PackageReference Include="Reqnroll.NUnit" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +28,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TestAutomationFramework.Core.WebUI\TestAutomationFramework.Core.WebUI.csproj" />
+    <ProjectReference Include="..\TestAutomationFramework.DemoUI\TestAutomationFramework.DemoUI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="reqnroll.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\applicationConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
