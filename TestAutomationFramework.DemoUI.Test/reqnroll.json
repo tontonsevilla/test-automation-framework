@@ -3,6 +3,9 @@
   "bindingAssemblies": [
     {
       "assembly": "TestAutomationFramework.DemoUI"
+    },
+    {
+      "assembly": "TestAutomationFramework.Core.WebUI"
     }
   ]
 }

@@ -6,10 +6,10 @@ namespace TestAutomationFramework.Core.WebUI.Runner
     [Binding]
     public class SpecflowRunner
     {
-        private IServiceProvider _serviceProvider;
+        public static IServiceProvider _serviceProvider;
 
         [BeforeTestRun]
-        public void BeforeTestRun()
+        public static void BeforeTestRun()
         {
             _serviceProvider = ContainerConfig.ConfigureServices();
         }

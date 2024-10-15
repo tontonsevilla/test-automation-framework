@@ -34,6 +34,14 @@ namespace TestAutomationFramework.Core.WebUI.Params
             }
         }
 
+        public string ApplicationConfigJsonPath
+        {
+            get
+            {
+                return @$"{System.IO.Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName}\Resources\applicationConfig.json";
+            }
+        }
+
         public string GridHubUrl
         {
             get

@@ -1,5 +1,6 @@
 ﻿using Reqnroll;
 using TestAutomationFramework.DemoUI.Pages;
+using TestAutomationFramework.DemoUI.WebAbstraction;
 
 namespace TestAutomationFramework.DemoUI.Steps
 {
@@ -7,16 +8,18 @@ namespace TestAutomationFramework.DemoUI.Steps
     public class LoginSteps
     {
         private readonly LoginPage _loginPage;
+        private readonly IAtConfiguration _atConfiguration;
 
-        public LoginSteps()
+        public LoginSteps(IAtConfiguration atConfiguration)
         {
-            _loginPage = new LoginPage();
+            _loginPage = new LoginPage(atConfiguration);
+            _atConfiguration = atConfiguration;
         }
 
         [Given("Login with valid credentials")]
         public void GivenLoginWithValidCredentials()
         {
-            _loginPage.LoginWithValidCredentials("standard_user", "secret_sauce");
+            _loginPage.LoginWithValidCredentials(_atConfiguration.GetConfiguration("username"), _atConfiguration.GetConfiguration("password"));
         }
 
         [Given("Login with invalid credentials")]
