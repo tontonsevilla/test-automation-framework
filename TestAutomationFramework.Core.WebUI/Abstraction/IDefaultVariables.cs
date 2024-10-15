@@ -4,5 +4,7 @@
     {
         string LogPath { get; }
         string FrameworkSettingsJsonPath { get; }
+        string GridHubUrl { get; }
+        string DataSetLocationPath { get; }
     }
 }

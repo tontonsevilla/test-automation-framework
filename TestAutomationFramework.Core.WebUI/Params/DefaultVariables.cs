@@ -33,5 +33,21 @@ namespace TestAutomationFramework.Core.WebUI.Params
                 return @$"{System.IO.Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).FullName}\Resources\frameworkSettings.json";
             }
         }
+
+        public string GridHubUrl
+        {
+            get
+            {
+                return "https://localhost:4444/wd/hub";
+            }
+        }
+
+        public string DataSetLocationPath
+        {
+            get
+            {
+                return @$"{System.IO.Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory + "../../../").FullName}\DataSet";
+            }
+        }
     }
 }
