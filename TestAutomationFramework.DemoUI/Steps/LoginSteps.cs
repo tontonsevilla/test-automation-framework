@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using Reqnroll;
+using TestAutomationFramework.Core.WebUI.Abstraction;
 using TestAutomationFramework.DemoUI.Pages;
 using TestAutomationFramework.DemoUI.WebAbstraction;
 
@@ -11,9 +12,11 @@ namespace TestAutomationFramework.DemoUI.Steps
         private readonly LoginPage _loginPage;
         private readonly IAtConfiguration _atConfiguration;
 
-        public LoginSteps(IAtConfiguration atConfiguration, IWebDriver webDriver)
+        public LoginSteps(
+            IAtConfiguration atConfiguration, 
+            IDrivers drivers)
         {
-            _loginPage = new LoginPage(atConfiguration, webDriver);
+            _loginPage = new LoginPage(atConfiguration, drivers);
             _atConfiguration = atConfiguration;
         }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestAutomationFramework.Core.WebUI.Abstraction;
 using TestAutomationFramework.DemoUI.Configuration;
 using TestAutomationFramework.DemoUI.WebAbstraction;
 using WebDriverManager.DriverConfigs.Impl;
@@ -20,10 +21,12 @@ namespace TestAutomationFramework.DemoUI.Pages
         IWebElement inputPassword => _webDriver.FindElement(By.XPath("//input[@id='password']"));
         IWebElement inputSubmit => _webDriver.FindElement(By.XPath("//input[@id='login-button']"));
 
-        public LoginPage(IAtConfiguration atConfiguration, IWebDriver webDriver)
+        public LoginPage(
+            IAtConfiguration atConfiguration, 
+            IDrivers drivers)
         {
             _atConfiguration = atConfiguration;
-            _webDriver = webDriver;
+            _webDriver = drivers.GetWebDriver();
             _webDriver.Manage().Window.Maximize();
         }
 

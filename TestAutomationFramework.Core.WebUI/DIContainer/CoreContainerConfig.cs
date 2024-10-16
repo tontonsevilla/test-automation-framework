@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Reqnroll.BoDi;
 using TestAutomationFramework.Core.WebUI.Abstraction;
+using TestAutomationFramework.Core.WebUI.DriverContext;
 using TestAutomationFramework.Core.WebUI.Params;
 using TestAutomationFramework.Core.WebUI.Reports;
 using TestAutomationFramework.Core.WebUI.Selenium.LocalWebDrivers;
@@ -22,6 +23,7 @@ namespace TestAutomationFramework.Core.WebUI.DIContainer
         {
             container.RegisterTypeAs<ChromeWebDriver, IChromeWebDriver>();
             container.RegisterTypeAs<FirefoxWebDriver, IFirefoxWebDriver>();
+            container.RegisterTypeAs<Drivers, IDrivers>();
 
             return container;
         }

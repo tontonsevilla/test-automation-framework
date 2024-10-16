@@ -1,10 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using OpenQA.Selenium;
-using Reqnroll;
+﻿using Reqnroll;
 using Reqnroll.BoDi;
 using TestAutomationFramework.Core.WebUI.Abstraction;
-using TestAutomationFramework.Core.WebUI.Runner;
-using TestAutomationFramework.Core.WebUI.Selenium.LocalWebDrivers;
 
 namespace TestAutomationFramework.DemoUI.Hooks
 {
@@ -14,6 +10,7 @@ namespace TestAutomationFramework.DemoUI.Hooks
         private readonly IChromeWebDriver _chromeWebDriver;
         private readonly IFirefoxWebDriver _firefoxWebDriver;
         private IGlobalProperties _globalProperties;
+        private IDrivers _drivers;
 
         public SpecflowBase(
             IChromeWebDriver chromeWebDriver, 
@@ -26,21 +23,14 @@ namespace TestAutomationFramework.DemoUI.Hooks
         [BeforeScenario(Order = 2)]
         public void BeforeScenario(IObjectContainer objectContainer)
         {
-            IWebDriver webDriver;
+           _drivers = objectContainer.Resolve<IDrivers>();
+        }
 
-            _globalProperties = SpecflowRunner._serviceProvider.GetRequiredService<IGlobalProperties>();
-
-            switch (_globalProperties.browsertype)
-            {
-                case "firefox":
-                    webDriver = _firefoxWebDriver.GetFirefoxDriver();
-                    break;
-                default:
-                    webDriver = _chromeWebDriver.GetChromeWebDriver();
-                    break;
-            }
-
-            objectContainer.RegisterInstanceAs(webDriver);
+        [AfterScenario]
+        public void AfterScenario()
+        {
+            Thread.Sleep(3000);
+            _drivers.CloseBrowser();
         }
     }
 }
