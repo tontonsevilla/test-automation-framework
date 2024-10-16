@@ -5,6 +5,7 @@ using TestAutomationFramework.Core.WebUI.DriverContext;
 using TestAutomationFramework.Core.WebUI.Params;
 using TestAutomationFramework.Core.WebUI.Reports;
 using TestAutomationFramework.Core.WebUI.Selenium.LocalWebDrivers;
+using TestAutomationFramework.Core.WebUI.WebElements;
 
 namespace TestAutomationFramework.Core.WebUI.DIContainer
 {
@@ -24,6 +25,7 @@ namespace TestAutomationFramework.Core.WebUI.DIContainer
             container.RegisterTypeAs<ChromeWebDriver, IChromeWebDriver>();
             container.RegisterTypeAs<FirefoxWebDriver, IFirefoxWebDriver>();
             container.RegisterTypeAs<Drivers, IDrivers>();
+            container.RegisterTypeAs<AtBy, IAtBy>();
 
             return container;
         }

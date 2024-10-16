@@ -1,29 +1,29 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Reqnroll.BoDi;
 using TestAutomationFramework.Core.WebUI.Abstraction;
-using TestAutomationFramework.DemoUI.Configuration;
+using TestAutomationFramework.Core.WebUI.Base;
 using TestAutomationFramework.DemoUI.WebAbstraction;
-using WebDriverManager.DriverConfigs.Impl;
 
 namespace TestAutomationFramework.DemoUI.Pages
 {
-    public class LoginPage
+    public class LoginPage : TestBase
     {
         IWebDriver _webDriver;
         private readonly IAtConfiguration _atConfiguration;
 
-        IWebElement inputUserName => _webDriver.FindElement(By.XPath("//input[@id='user-name']"));
-        IWebElement inputPassword => _webDriver.FindElement(By.XPath("//input[@id='password']"));
-        IWebElement inputSubmit => _webDriver.FindElement(By.XPath("//input[@id='login-button']"));
+        IAtBy byUserName => GetBy(LocatorType.XPath, "//input[@id='user-name']");
+        IWebElement inputUserName => _webDriver.FindElement(byUserName.By);
+
+        IAtBy byPassword => GetBy(LocatorType.XPath, "//input[@id='password']");
+        IWebElement inputPassword => _webDriver.FindElement(byPassword.By);
+
+        IAtBy byLogin => GetBy(LocatorType.XPath, "//input[@id='login-button']");
+        IWebElement inputLogin => _webDriver.FindElement(byLogin.By);
 
         public LoginPage(
             IAtConfiguration atConfiguration, 
-            IDrivers drivers)
+            IDrivers drivers,
+            IObjectContainer objectContainer) : base(objectContainer)
         {
             _atConfiguration = atConfiguration;
             _webDriver = drivers.GetWebDriver();
@@ -35,7 +35,7 @@ namespace TestAutomationFramework.DemoUI.Pages
             _webDriver.Navigate().GoToUrl(_atConfiguration.GetConfiguration("url"));
             inputUserName.SendKeys(username);
             inputPassword.SendKeys(password);
-            inputSubmit.Click();
+            inputLogin.Click();
         }
 
         public void LoginWithInvalidCredentials(string username, string password)
@@ -43,7 +43,7 @@ namespace TestAutomationFramework.DemoUI.Pages
             _webDriver.Navigate().GoToUrl(_atConfiguration.GetConfiguration("url"));
             inputUserName.SendKeys(username);
             inputPassword.SendKeys(password);
-            inputSubmit.Click();
+            inputLogin.Click();
         }
     }
 }
