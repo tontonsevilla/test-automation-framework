@@ -20,11 +20,10 @@ namespace TestAutomationFramework.DemoUI.Pages
         IWebElement inputPassword => _webDriver.FindElement(By.XPath("//input[@id='password']"));
         IWebElement inputSubmit => _webDriver.FindElement(By.XPath("//input[@id='login-button']"));
 
-        public LoginPage(IAtConfiguration atConfiguration)
+        public LoginPage(IAtConfiguration atConfiguration, IWebDriver webDriver)
         {
             _atConfiguration = atConfiguration;
-            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
-            _webDriver = new ChromeDriver();
+            _webDriver = webDriver;
             _webDriver.Manage().Window.Maximize();
         }
 

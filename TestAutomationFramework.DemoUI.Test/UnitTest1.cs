@@ -9,7 +9,7 @@ namespace TestAutomationFramework.DemoUI.Test
         [SetUp]
         public void Setup()
         {
-            var serviceProvider = ContainerConfig.ConfigureServices();
+            var serviceProvider = CoreContainerConfig.ConfigureServices();
             var globalProperties = serviceProvider.GetRequiredService<IGlobalProperties>();
 
             var logging = serviceProvider.GetRequiredService<ILogging>();

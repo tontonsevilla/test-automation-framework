@@ -11,7 +11,7 @@ namespace TestAutomationFramework.Core.WebUI.Runner
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            _serviceProvider = ContainerConfig.ConfigureServices();
+            _serviceProvider = CoreContainerConfig.ConfigureServices();
         }
     }
 }
