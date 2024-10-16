@@ -1,11 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using OpenQA.Selenium;
 using Reqnroll;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Reqnroll.BoDi;
 using TestAutomationFramework.Core.WebUI.Abstraction;
 using TestAutomationFramework.Core.WebUI.Runner;
 
@@ -18,13 +14,16 @@ namespace TestAutomationFramework.Core.WebUI.DriverContext
         private IWebDriver webDriver;
         private readonly IChromeWebDriver _chromeWebDriver;
         private readonly IFirefoxWebDriver _firefoxWebDriver;
+        private readonly IObjectContainer _objectContainer;
 
         public Drivers(
             IChromeWebDriver chromeWebDriver,
-            IFirefoxWebDriver firefoxWebDriver)
+            IFirefoxWebDriver firefoxWebDriver,
+            IObjectContainer objectContainer)
         {
             _chromeWebDriver = chromeWebDriver;
             _firefoxWebDriver = firefoxWebDriver;
+            _objectContainer = objectContainer;
         }
 
         public IWebDriver GetWebDriver()
@@ -35,6 +34,14 @@ namespace TestAutomationFramework.Core.WebUI.DriverContext
             }
 
             return webDriver;
+        }
+
+        public IAtWebElement FindElement(IAtBy atBy)
+        {
+            var atWebElement = _objectContainer.Resolve<IAtWebElement>();
+            atWebElement.Set(GetWebDriver(), atBy);
+
+            return atWebElement;
         }
 
         public void GetNewWebDriver()
@@ -50,6 +57,11 @@ namespace TestAutomationFramework.Core.WebUI.DriverContext
                     webDriver = _chromeWebDriver.GetChromeWebDriver();
                     break;
             }
+        }
+
+        public void NavigateTo(string url)
+        {
+            GetWebDriver().Navigate().GoToUrl(url);
         }
 
         public void CloseBrowser()

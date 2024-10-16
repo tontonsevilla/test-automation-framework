@@ -10,15 +10,16 @@ namespace TestAutomationFramework.DemoUI.Pages
     {
         IWebDriver _webDriver;
         private readonly IAtConfiguration _atConfiguration;
+        private readonly IDrivers _drivers;
 
         IAtBy byUserName => GetBy(LocatorType.XPath, "//input[@id='user-name']");
-        IWebElement inputUserName => _webDriver.FindElement(byUserName.By);
+        IAtWebElement inputUserName => _drivers.FindElement(byUserName);
 
         IAtBy byPassword => GetBy(LocatorType.XPath, "//input[@id='password']");
-        IWebElement inputPassword => _webDriver.FindElement(byPassword.By);
+        IAtWebElement inputPassword => _drivers.FindElement(byPassword);
 
         IAtBy byLogin => GetBy(LocatorType.XPath, "//input[@id='login-button']");
-        IWebElement inputLogin => _webDriver.FindElement(byLogin.By);
+        IAtWebElement inputLogin => _drivers.FindElement(byLogin);
 
         public LoginPage(
             IAtConfiguration atConfiguration, 
@@ -26,13 +27,12 @@ namespace TestAutomationFramework.DemoUI.Pages
             IObjectContainer objectContainer) : base(objectContainer)
         {
             _atConfiguration = atConfiguration;
-            _webDriver = drivers.GetWebDriver();
-            _webDriver.Manage().Window.Maximize();
+            _drivers = drivers;
         }
 
         public void LoginWithValidCredentials(string username, string password)
         {
-            _webDriver.Navigate().GoToUrl(_atConfiguration.GetConfiguration("url"));
+            _drivers.NavigateTo(_atConfiguration.GetConfiguration("url"));
             inputUserName.SendKeys(username);
             inputPassword.SendKeys(password);
             inputLogin.Click();
@@ -40,7 +40,7 @@ namespace TestAutomationFramework.DemoUI.Pages
 
         public void LoginWithInvalidCredentials(string username, string password)
         {
-            _webDriver.Navigate().GoToUrl(_atConfiguration.GetConfiguration("url"));
+            _drivers.NavigateTo(_atConfiguration.GetConfiguration("url"));
             inputUserName.SendKeys(username);
             inputPassword.SendKeys(password);
             inputLogin.Click();

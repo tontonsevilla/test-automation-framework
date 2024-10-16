@@ -26,6 +26,7 @@ namespace TestAutomationFramework.Core.WebUI.DIContainer
             container.RegisterTypeAs<FirefoxWebDriver, IFirefoxWebDriver>();
             container.RegisterTypeAs<Drivers, IDrivers>();
             container.RegisterTypeAs<AtBy, IAtBy>();
+            container.RegisterTypeAs<AtWebElement, IAtWebElement>();
 
             return container;
         }
