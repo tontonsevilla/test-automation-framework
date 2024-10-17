@@ -51,31 +51,41 @@ namespace TestAutomationFramework.Core.WebUI.WebElements
 
         public void Click()
         {
-            try
+            for (var i = 0; i < 5; i++) 
             {
-                var webElement = GetElement();
-                webElement.Click();
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error while clicking the element: {ex.Message}";
-                _logging.Error(message);
-                throw new TestAutomationFrameworkException(message);
+                try
+                {
+                    var webElement = GetElement();
+                    webElement.Click();
+                    break;
+                }
+                catch (StaleElementReferenceException) { }
+                catch (Exception ex)
+                {
+                    var message = $"Error while clicking the element: {ex.Message}";
+                    _logging.Error(message);
+                    throw new TestAutomationFrameworkException(message);
+                }
             }
         }
 
         public void SendKeys(string text)
         {
-            try
+            for (int i = 0; i < 5; i++)
             {
-                var webElement = GetElement();
-                webElement.SendKeys(text);
-            }
-            catch (Exception ex)
-            {
-                var message = $"Error while sending keys to the element: {ex.Message}";
-                _logging.Error(message);
-                throw new TestAutomationFrameworkException(message);
+                try
+                {
+                    var webElement = GetElement();
+                    webElement.SendKeys(text);
+                    break;
+                }
+                catch (StaleElementReferenceException) { }
+                catch (Exception ex)
+                {
+                    var message = $"Error while sending keys to the element: {ex.Message}";
+                    _logging.Error(message);
+                    throw new TestAutomationFrameworkException(message);
+                }
             }
         }
     }
