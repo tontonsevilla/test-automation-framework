@@ -11,5 +11,11 @@ namespace TestAutomationFramework.Core.WebUI.Abstraction
         void Click();
 
         void SendKeys(string text);
+        string GetText();
+        string GetAttribute(string attributeName);
+        void MouseHover();
+        bool IsDisplayed();
+        void DoubleClick();
+        void ClickWithJS();
     }
 }
