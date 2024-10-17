@@ -1,5 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools.V127.Debugger;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using TestAutomationFramework.Core.WebUI.Abstraction;
 using TestAutomationFramework.Core.WebUI.CustomException;
 using TestAutomationFramework.Core.WebUI.Runner;
@@ -25,16 +28,39 @@ namespace TestAutomationFramework.Core.WebUI.WebElements
             _atBy = atBy;
         }
 
+        public IWebElement GetElement()
+        {
+            try
+            {
+                var wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
+                wait.IgnoreExceptionTypes(
+                    typeof(StaleElementReferenceException),
+                    typeof(NoSuchElementException),
+                    typeof(ElementNotVisibleException),
+                    typeof(ElementNotInteractableException));
+
+                return wait.Until<IWebElement>(ExpectedConditions.ElementToBeClickable(_atBy.By));
+            }
+            catch (Exception ex)
+            {
+                var message = $"Element not clickable: {ex.Message}";
+                _logging.Error(message);
+                throw new TestAutomationFrameworkException(message);
+            }
+        }
+
         public void Click()
         {
             try
             {
-                _webDriver.FindElement(_atBy.By).Click();
+                var webElement = GetElement();
+                webElement.Click();
             }
             catch (Exception ex)
             {
-                _logging.Error("Error while clicking the element: " + ex.Message);
-                throw new TestAutomationFrameworkException("Error while clicking the element: " + ex.Message);
+                var message = $"Error while clicking the element: {ex.Message}";
+                _logging.Error(message);
+                throw new TestAutomationFrameworkException(message);
             }
         }
 
@@ -42,12 +68,14 @@ namespace TestAutomationFramework.Core.WebUI.WebElements
         {
             try
             {
-                _webDriver.FindElement(_atBy.By).SendKeys(text);
+                var webElement = GetElement();
+                webElement.SendKeys(text);
             }
             catch (Exception ex)
             {
-                _logging.Error("Error while sending keys to the element: " + ex.Message);
-                throw new TestAutomationFrameworkException("Error while sending keys to the element: " + ex.Message);
+                var message = $"Error while sending keys to the element: {ex.Message}";
+                _logging.Error(message);
+                throw new TestAutomationFrameworkException(message);
             }
         }
     }
