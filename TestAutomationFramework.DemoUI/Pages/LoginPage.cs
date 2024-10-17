@@ -6,7 +6,7 @@ using TestAutomationFramework.DemoUI.WebAbstraction;
 
 namespace TestAutomationFramework.DemoUI.Pages
 {
-    public class LoginPage : TestBase
+    public class LoginPage : TestBase, ILoginPage
     {
         IWebDriver _webDriver;
         private readonly IAtConfiguration _atConfiguration;

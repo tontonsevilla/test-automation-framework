@@ -7,17 +7,18 @@ using TestAutomationFramework.DemoUI.WebAbstraction;
 namespace TestAutomationFramework.DemoUI.Steps
 {
     [Binding]
-    public class LoginSteps
+    public class LoginSteps : ILoginSteps
     {
-        private readonly LoginPage _loginPage;
+        private readonly ILoginPage _loginPage;
         private readonly IAtConfiguration _atConfiguration;
 
         public LoginSteps(
             IAtConfiguration atConfiguration, 
             IDrivers drivers,
-            IObjectContainer objectContainer)
+            IObjectContainer objectContainer,
+            ILoginPage loginPage)
         {
-            _loginPage = new LoginPage(atConfiguration, drivers, objectContainer);
+            _loginPage = loginPage;
             _atConfiguration = atConfiguration;
         }
 
