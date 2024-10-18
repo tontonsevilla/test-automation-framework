@@ -59,14 +59,82 @@ namespace TestAutomationFramework.Core.WebUI.DriverContext
             }
         }
 
+        public void CloseBrowser()
+        {
+            webDriver.Quit();
+        }
+
         public void NavigateTo(string url)
         {
             GetWebDriver().Navigate().GoToUrl(url);
         }
 
-        public void CloseBrowser()
+        public string GetPageTitle()
         {
-            webDriver.Quit();
+            return GetWebDriver().Title;
         }
+
+        public void GetNewTab()
+        {
+            GetWebDriver().SwitchTo().NewWindow(WindowType.Tab);
+        }
+
+        public void CloseCurrentBrowser()
+        {
+            GetWebDriver().Close();
+        }
+
+        public void SwitchToWindowWithHandle(string handle)
+        {
+            GetWebDriver().SwitchTo().Window(handle);
+        }
+
+        public void SwitchToWindowWithTitle(string title)
+        {
+            IList<string> windowHandes = GetWebDriver().WindowHandles;
+
+            foreach (var windowHandle in windowHandes)
+            {
+                if (GetWebDriver().SwitchTo().Window(windowHandle).Title.Contains(title))
+                {
+                    break;
+                }
+            }
+        }
+
+        public void SwitchToFrameWithName(string frameName)
+        {
+            GetWebDriver().SwitchTo().Frame(frameName);
+        }
+
+        public void Maximize()
+        {
+            GetWebDriver().Manage().Window.Maximize();
+        }
+
+        public void ExecuteJavaScript(string script)
+        {
+            IJavaScriptExecutor javaScriptExecutor = (IJavaScriptExecutor)GetWebDriver();
+            javaScriptExecutor.ExecuteScript(script);
+        }
+
+        public void ScrollWithPixel()
+        {
+            IJavaScriptExecutor javaScriptExecutor = (IJavaScriptExecutor)GetWebDriver();
+            javaScriptExecutor.ExecuteScript("window.scrollBy(0, 500);");
+        }
+
+        public void ScrollByHeight()
+        {
+            IJavaScriptExecutor javaScriptExecutor = (IJavaScriptExecutor)GetWebDriver();
+            javaScriptExecutor.ExecuteScript("window.scrollBy(0, document.body.scrollHeight);");
+        }
+
+        public void ScrollIntoView(IAtWebElement atWebElement)
+        {
+            var webElement = atWebElement.GetElement();
+            IJavaScriptExecutor javaScriptExecutor = (IJavaScriptExecutor)GetWebDriver();
+            javaScriptExecutor.ExecuteScript("arguments[0].scrollIntoView", webElement);
+        } 
     }
 }

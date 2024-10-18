@@ -17,5 +17,6 @@ namespace TestAutomationFramework.Core.WebUI.Abstraction
         bool IsDisplayed();
         void DoubleClick();
         void ClickWithJS();
+        IWebElement GetElement();
     }
 }
