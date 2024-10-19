@@ -1,7 +1,6 @@
 ﻿using Reqnroll;
 using Reqnroll.BoDi;
 using TestAutomationFramework.Core.WebUI.Abstraction;
-using TestAutomationFramework.DemoUI.Pages;
 using TestAutomationFramework.DemoUI.WebAbstraction;
 
 namespace TestAutomationFramework.DemoUI.Steps
