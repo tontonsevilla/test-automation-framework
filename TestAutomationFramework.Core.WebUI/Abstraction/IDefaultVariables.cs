@@ -7,5 +7,6 @@
         string ApplicationConfigJsonPath { get; }
         string GridHubUrl { get; }
         string DataSetLocationPath { get; }
+        string ExtentReportPath { get; }
     }
 }

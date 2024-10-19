@@ -26,6 +26,14 @@ namespace TestAutomationFramework.Core.WebUI.Params
             }
         }
 
+        public string ExtentReportPath
+        {
+            get
+            {
+                return ReportPath + "\\index.html";
+            }
+        }
+
         public string FrameworkSettingsJsonPath
         {
             get

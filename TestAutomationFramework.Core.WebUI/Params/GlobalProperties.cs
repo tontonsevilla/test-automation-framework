@@ -8,13 +8,16 @@ namespace TestAutomationFramework.Core.WebUI.Params
     {
         private readonly IDefaultVariables _defaultVariables;
         private readonly ILogging _logging;
+        private readonly IExtentFeatureReport _extentFeatureReport;
 
         public GlobalProperties(
             IDefaultVariables defaultVariables,
-            ILogging logging)
+            ILogging logging,
+            IExtentFeatureReport extentFeatureReport)
         {
             _defaultVariables = defaultVariables;
             _logging = logging;
+            _extentFeatureReport = extentFeatureReport;
             Configuration();
         }
 
@@ -49,6 +52,8 @@ namespace TestAutomationFramework.Core.WebUI.Params
             loglevel = builder["LogLevel"];
             datasetlocation = string.IsNullOrEmpty(builder["DataSetLocation"]) ? _defaultVariables.DataSetLocationPath : builder["DataSetLocation"];
             downloadedlocation = string.IsNullOrEmpty(builder["DataSetLocation"]) ? _defaultVariables.DataSetLocationPath : builder["DownloadedLocation"];
+
+            _extentFeatureReport.InitializeExtentReport();
 
             _logging.LogLevel(loglevel);
 

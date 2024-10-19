@@ -17,6 +17,10 @@ namespace TestAutomationFramework.Core.WebUI.DIContainer
             services.AddSingleton<IDefaultVariables, DefaultVariables>();
             services.AddSingleton<ILogging, Logging>();
             services.AddSingleton<IGlobalProperties, GlobalProperties>();
+            services.AddSingleton<IExtentFeatureReport, ExtentFeatureReport>();
+            
+            services.AddTransient<IExtentReport, ExtentReport>();
+
             return services.BuildServiceProvider();
         }
 
