@@ -10,9 +10,9 @@ namespace TestAutomationFramework.Core.WebUI.Abstraction
     {
         void CreateFeature(string featureName);
         void CreateScenario(string scenarioName);
-        void Error(string msg);
-        void Fail(string msg);
-        void Pass(string msg);
-        void Warning(string msg);
+        void Error(string msg, string base64);
+        void Fail(string msg, string base64);
+        void Pass(string msg, string base64);
+        void Warning(string msg, string base64);
     }
 }

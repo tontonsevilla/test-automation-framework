@@ -22,24 +22,32 @@ namespace TestAutomationFramework.Core.WebUI.Reports
             _scenario = _feature.CreateNode(scenarioName);
         }
 
-        public void Pass(string msg)
+        public void Pass(string msg, string base64)
         {
-            _scenario.Log(AventStack.ExtentReports.Status.Pass, msg);
+            _scenario.Log(AventStack.ExtentReports.Status.Pass, 
+                msg,
+                AventStack.ExtentReports.MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64).Build());
         }
 
-        public void Fail(string msg)
+        public void Fail(string msg, string base64)
         {
-            _scenario.Log(AventStack.ExtentReports.Status.Fail, msg);
+            _scenario.Log(AventStack.ExtentReports.Status.Fail, 
+                msg,
+                AventStack.ExtentReports.MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64).Build());
         }
 
-        public void Warning(string msg)
+        public void Warning(string msg, string base64)
         {
-            _scenario.Log(AventStack.ExtentReports.Status.Warning, msg);
+            _scenario.Log(AventStack.ExtentReports.Status.Warning, 
+                msg,
+                AventStack.ExtentReports.MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64).Build());
         }
 
-        public void Error(string msg)
+        public void Error(string msg, string base64)
         {
-            _scenario.Log(AventStack.ExtentReports.Status.Error, msg);
+            _scenario.Log(AventStack.ExtentReports.Status.Error, 
+                msg,
+                AventStack.ExtentReports.MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64).Build());
         }
     }
 }

@@ -19,5 +19,6 @@ namespace TestAutomationFramework.Core.WebUI.Abstraction
         void ScrollWithPixel();
         void ScrollByHeight();
         void ScrollIntoView(IAtWebElement atWebElement);
+        string GetScreenshot();
     }
 }

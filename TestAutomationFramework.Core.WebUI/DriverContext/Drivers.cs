@@ -136,5 +136,10 @@ namespace TestAutomationFramework.Core.WebUI.DriverContext
             IJavaScriptExecutor javaScriptExecutor = (IJavaScriptExecutor)GetWebDriver();
             javaScriptExecutor.ExecuteScript("arguments[0].scrollIntoView", webElement);
         } 
+
+        public string GetScreenshot()
+        {
+            return ((ITakesScreenshot)GetWebDriver()).GetScreenshot().AsBase64EncodedString;
+        }
     }
 }

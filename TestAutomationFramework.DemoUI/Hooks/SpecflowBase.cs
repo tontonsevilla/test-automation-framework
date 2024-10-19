@@ -18,10 +18,12 @@ namespace TestAutomationFramework.DemoUI.Hooks
 
         public SpecflowBase(
             IChromeWebDriver chromeWebDriver, 
-            IFirefoxWebDriver firefoxWebDriver)
+            IFirefoxWebDriver firefoxWebDriver,
+            IDrivers drivers)
         {
             _chromeWebDriver = chromeWebDriver;
             _firefoxWebDriver = firefoxWebDriver;
+            _drivers = drivers;
         }
 
         [BeforeScenario(Order = 2)]
@@ -41,15 +43,21 @@ namespace TestAutomationFramework.DemoUI.Hooks
             FeatureContext featureContext)
         {
             var extentReport = (IExtentReport)featureContext["extentReport"];
+            string screenshotBase64String = string.Empty;
 
             if (scenarioContext.TestError != null)
             {
-                extentReport.Fail(scenarioContext.StepContext.StepInfo.Text);
+                screenshotBase64String =_drivers.GetScreenshot();
+                extentReport.Fail(scenarioContext.StepContext.StepInfo.Text, screenshotBase64String);
             }
             else
             {
-                SpecflowRunner._serviceProvider.GetRequiredService<IGlobalProperties>();
-                extentReport.Pass(scenarioContext.StepContext.StepInfo.Text);
+                _globalProperties = SpecflowRunner._serviceProvider.GetRequiredService<IGlobalProperties>();
+                if (_globalProperties.stepscreenshot)
+                {
+                    screenshotBase64String = _drivers.GetScreenshot();
+                }
+                extentReport.Pass(scenarioContext.StepContext.StepInfo.Text, screenshotBase64String);
             }
         }
 
