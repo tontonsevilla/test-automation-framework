@@ -22,13 +22,13 @@ namespace TestAutomationFramework.DemoUI.Steps
             _atConfiguration = atConfiguration;
         }
 
-        [Given("Valid credentials")]
+        [Given("Login with valid credentials")]
         public void GivenLoginWithValidCredentials()
         {
             _loginPage.LoginWithValidCredentials(_atConfiguration.GetConfiguration("username"), _atConfiguration.GetConfiguration("password"));
         }
 
-        [Given("Invalid credentials")]
+        [Given("Login with invalid credentials")]
         public void GivenLoginWithInvalidCredentials()
         {
             _loginPage.LoginWithInvalidCredentials("standard_user", "wrong");

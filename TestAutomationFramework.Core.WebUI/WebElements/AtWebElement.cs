@@ -29,6 +29,8 @@ namespace TestAutomationFramework.Core.WebUI.WebElements
             _atBy = atBy;
         }
 
+        int IAtWebElement.NumberOfElement => _webDriver.FindElements(_atBy.By).Count();
+
         public IWebElement GetElement()
         {
             try

@@ -18,5 +18,6 @@ namespace TestAutomationFramework.Core.WebUI.Abstraction
         void DoubleClick();
         void ClickWithJS();
         IWebElement GetElement();
+        int NumberOfElement { get; }
     }
 }

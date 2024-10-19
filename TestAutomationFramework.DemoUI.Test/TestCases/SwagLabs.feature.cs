@@ -20,22 +20,22 @@ namespace TestAutomationFramework.DemoUI.Test.TestCases
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Login")]
-    public partial class LoginFeature
+    [NUnit.Framework.DescriptionAttribute("SwagLabs Functionality")]
+    public partial class SwagLabsFunctionalityFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Login.feature"
+#line 1 "SwagLabs.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual async System.Threading.Tasks.Task FeatureSetupAsync()
         {
             testRunner = global::Reqnroll.TestRunnerManager.GetTestRunnerForAssembly();
-            global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TestCases", "Login", "A short summary of the feature", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+            global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TestCases", "SwagLabs Functionality", "A short summary of the feature", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
             await testRunner.OnFeatureStartAsync(featureInfo);
         }
         
@@ -75,13 +75,15 @@ namespace TestAutomationFramework.DemoUI.Test.TestCases
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login with valid credentials")]
-        public async System.Threading.Tasks.Task LoginWithValidCredentials()
+        [NUnit.Framework.DescriptionAttribute("Verify different products of swag labs")]
+        [NUnit.Framework.CategoryAttribute("tag1")]
+        public async System.Threading.Tasks.Task VerifyDifferentProductsOfSwagLabs()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "tag1"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login with valid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 5
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Verify different products of swag labs", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -91,32 +93,32 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 6
+#line 7
  await testRunner.GivenAsync("Login with valid credentials", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login with invalid credentials")]
-        public async System.Threading.Tasks.Task LoginWithInvalidCredentials()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login with invalid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
+                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                            "Item",
+                            "Price"});
+                table1.AddRow(new string[] {
+                            "Sauce Labs Bike Light 1",
+                            "$9.99"});
+                table1.AddRow(new string[] {
+                            "Sauce Labs Backpack",
+                            "$29.99"});
+                table1.AddRow(new string[] {
+                            "Sauce Labs Bolt T-Shirt",
+                            "$15.99"});
+                table1.AddRow(new string[] {
+                            "Sauce Labs Fleece Jacket",
+                            "$49.99"});
+                table1.AddRow(new string[] {
+                            "Sauce Labs Onesie",
+                            "$7.99"});
+                table1.AddRow(new string[] {
+                            "Test.allTheThings() T-Shirt (Red)",
+                            "$15.99"});
 #line 8
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 9
- await testRunner.GivenAsync("Login with invalid credentials", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+  await testRunner.ThenAsync("user verifies swag lab products", ((string)(null)), table1, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

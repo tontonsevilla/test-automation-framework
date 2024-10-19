@@ -15,8 +15,12 @@ namespace TestAutomationFramework.DemoUI.Container
         public void BeforeScenario(IObjectContainer objectContainer)
         {
             objectContainer.RegisterTypeAs<AtConfiguration, IAtConfiguration>();
+            
             objectContainer.RegisterTypeAs<LoginPage, ILoginPage>();
             objectContainer.RegisterTypeAs<LoginSteps, ILoginSteps>();
+
+            objectContainer.RegisterTypeAs<SwagLabsPage, ISwagLabsPage>();
+
 
             objectContainer = CoreContainerConfig.SetContainer(objectContainer);
         }

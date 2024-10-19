@@ -2,8 +2,8 @@
 
 A short summary of the feature
 
-Scenario: Login with valida credentials
-	Given Valid credentials
+Scenario: Login with valid credentials
+	Given Login with valid credentials
 
 Scenario: Login with invalid credentials
-	Given Invalid credentials
+	Given Login with invalid credentials
