@@ -54,7 +54,7 @@ namespace TestAutomationFramework.Core.WebUI.Params
         {
             get
             {
-                return "https://localhost:4444/wd/hub";
+                return "";
             }
         }
 

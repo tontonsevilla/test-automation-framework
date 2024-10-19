@@ -85,16 +85,12 @@ await testRunner.GivenAsync("Login with valid credentials", ((string)(null)), ((
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify different products of swag labs")]
-        [NUnit.Framework.CategoryAttribute("Browser_Chrome")]
-        [NUnit.Framework.CategoryAttribute("Browser_FireFox")]
         public async System.Threading.Tasks.Task VerifyDifferentProductsOfSwagLabs()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Browser_Chrome",
-                    "Browser_FireFox"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Verify different products of swag labs", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 10
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -128,7 +124,7 @@ await this.FeatureBackgroundAsync();
                 table2.AddRow(new string[] {
                             "Test.allTheThings() T-Shirt (Red)",
                             "$15.99"});
-#line 11
+#line 9
   await testRunner.ThenAsync("user verifies swag lab products", ((string)(null)), table2, "Then ");
 #line hidden
             }
@@ -137,16 +133,12 @@ await this.FeatureBackgroundAsync();
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify Cart count")]
-        [NUnit.Framework.CategoryAttribute("Browser_Chrome")]
-        [NUnit.Framework.CategoryAttribute("Browser_FireFox")]
         public async System.Threading.Tasks.Task VerifyCartCount()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Browser_Chrome",
-                    "Browser_FireFox"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Verify Cart count", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 22
+#line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -165,10 +157,10 @@ await this.FeatureBackgroundAsync();
                             "Sauce Labs Backpack"});
                 table3.AddRow(new string[] {
                             "Sauce Labs Fleece Jacket"});
-#line 23
+#line 19
  await testRunner.WhenAsync("User cart items from product list to cart", ((string)(null)), table3, "When ");
 #line hidden
-#line 27
+#line 23
  await testRunner.ThenAsync("User checks count in cart of selected items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
                 global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
@@ -177,20 +169,20 @@ await this.FeatureBackgroundAsync();
                             "Sauce Labs Backpack"});
                 table4.AddRow(new string[] {
                             "Sauce Labs Fleece Jacket"});
-#line 28
+#line 24
  await testRunner.WhenAsync("User uncart items from product list", ((string)(null)), table4, "When ");
 #line hidden
-#line 32
+#line 28
  await testRunner.ThenAsync("user verifies no item in cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
                 global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
                             "Items"});
                 table5.AddRow(new string[] {
                             "Sauce Labs Backpack"});
-#line 33
+#line 29
  await testRunner.WhenAsync("User cart items from product list to cart", ((string)(null)), table5, "When ");
 #line hidden
-#line 36
+#line 32
  await testRunner.ThenAsync("User checks count in cart of selected items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
