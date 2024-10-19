@@ -3,6 +3,7 @@ using Reqnroll.BoDi;
 using TestAutomationFramework.Core.WebUI.DIContainer;
 using TestAutomationFramework.DemoUI.Configuration;
 using TestAutomationFramework.DemoUI.Pages;
+using TestAutomationFramework.DemoUI.Pages.MakeMyTrip;
 using TestAutomationFramework.DemoUI.Steps;
 using TestAutomationFramework.DemoUI.WebAbstraction;
 
@@ -21,6 +22,8 @@ namespace TestAutomationFramework.DemoUI.Container
 
             objectContainer.RegisterTypeAs<SwagLabsPage, ISwagLabsPage>();
 
+            objectContainer.RegisterTypeAs<FlightSearchPage, IFlightSearchPage>();
+            objectContainer.RegisterTypeAs<FlightListingPage, IFlightListingPage>();
 
             objectContainer = CoreContainerConfig.SetContainer(objectContainer);
         }

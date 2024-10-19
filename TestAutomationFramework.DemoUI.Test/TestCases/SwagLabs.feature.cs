@@ -103,29 +103,29 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "Item",
                             "Price"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Sauce Labs Bike Light",
                             "$9.99"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Sauce Labs Backpack",
                             "$29.99"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Sauce Labs Bolt T-Shirt",
                             "$15.99"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Sauce Labs Fleece Jacket",
                             "$49.99"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Sauce Labs Onesie",
                             "$7.99"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Test.allTheThings() T-Shirt (Red)",
                             "$15.99"});
 #line 9
-  await testRunner.ThenAsync("user verifies swag lab products", ((string)(null)), table1, "Then ");
+  await testRunner.ThenAsync("user verifies swag lab products", ((string)(null)), table2, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -151,36 +151,36 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
 await this.FeatureBackgroundAsync();
 #line hidden
-                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
-                            "Items"});
-                table2.AddRow(new string[] {
-                            "Sauce Labs Backpack"});
-                table2.AddRow(new string[] {
-                            "Sauce Labs Fleece Jacket"});
-#line 19
- await testRunner.WhenAsync("User cart items from product list to cart", ((string)(null)), table2, "When ");
-#line hidden
-#line 23
- await testRunner.ThenAsync("User checks count in cart of selected items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
                             "Items"});
                 table3.AddRow(new string[] {
                             "Sauce Labs Backpack"});
                 table3.AddRow(new string[] {
                             "Sauce Labs Fleece Jacket"});
-#line 24
- await testRunner.WhenAsync("User uncart items from product list", ((string)(null)), table3, "When ");
+#line 19
+ await testRunner.WhenAsync("User cart items from product list to cart", ((string)(null)), table3, "When ");
 #line hidden
-#line 28
- await testRunner.ThenAsync("user verifies no item in cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 23
+ await testRunner.ThenAsync("User checks count in cart of selected items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
                 global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
                             "Items"});
                 table4.AddRow(new string[] {
                             "Sauce Labs Backpack"});
+                table4.AddRow(new string[] {
+                            "Sauce Labs Fleece Jacket"});
+#line 24
+ await testRunner.WhenAsync("User uncart items from product list", ((string)(null)), table4, "When ");
+#line hidden
+#line 28
+ await testRunner.ThenAsync("user verifies no item in cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                            "Items"});
+                table5.AddRow(new string[] {
+                            "Sauce Labs Backpack"});
 #line 29
- await testRunner.WhenAsync("User cart items from product list to cart", ((string)(null)), table4, "When ");
+ await testRunner.WhenAsync("User cart items from product list to cart", ((string)(null)), table5, "When ");
 #line hidden
 #line 32
  await testRunner.ThenAsync("User checks count in cart of selected items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");

@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <Folder Include="DataSet\" />
-    <Folder Include="TestCases\" />
     <Folder Include="Result\" />
+    <Folder Include="TestCases\MakeMyTrip\" />
   </ItemGroup>
 
   <ItemGroup>
