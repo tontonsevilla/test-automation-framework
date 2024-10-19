@@ -20,5 +20,29 @@ namespace TestAutomationFramework.DemoUI.Steps
             _swagLabsPage.VerifyProductItems(dataTable);
         }
 
+        [When("User cart items from product list to cart")]
+        public void WhenUserCartItemsFromProductListToCart(DataTable dataTable)
+        {
+            _swagLabsPage.AddCartItems(dataTable.Rows.Select(row => row["Items"].ToString()).ToList());
+        }
+
+        [Then("User checks count in cart of selected items")]
+        public void ThenUserChecksCountInCartOfSelectedItems()
+        {
+            _swagLabsPage.MatchSelectedCartItems();
+        }
+
+        [When("User uncart items from product list")]
+        public void WhenUserUncartItemsFromProductList(DataTable dataTable)
+        {
+            _swagLabsPage.RemoveCartItems(dataTable.Rows.Select(row => row["Items"].ToString()).ToList());
+        }
+
+        [Then("user verifies no item in cart")]
+        public void ThenUserVerifiesNoItemInCart()
+        {
+            _swagLabsPage.CartIsEmpty();
+        }
+
     }
 }

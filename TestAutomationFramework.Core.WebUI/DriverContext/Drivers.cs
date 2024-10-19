@@ -36,6 +36,11 @@ namespace TestAutomationFramework.Core.WebUI.DriverContext
             return webDriver;
         }
 
+        public int FindElementsCount(IAtBy iatBy)
+        {
+            return GetWebDriver().FindElements(iatBy.By).Count;
+        }
+
         public IAtWebElement FindElement(IAtBy atBy)
         {
             var atWebElement = _objectContainer.Resolve<IAtWebElement>();

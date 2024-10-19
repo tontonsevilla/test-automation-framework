@@ -74,16 +74,23 @@ namespace TestAutomationFramework.DemoUI.Test.TestCases
             await testRunner.CollectScenarioErrorsAsync();
         }
         
+        public virtual async System.Threading.Tasks.Task FeatureBackgroundAsync()
+        {
+#line 5
+#line hidden
+#line 6
+await testRunner.GivenAsync("Login with valid credentials", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify different products of swag labs")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
         public async System.Threading.Tasks.Task VerifyDifferentProductsOfSwagLabs()
         {
-            string[] tagsOfScenario = new string[] {
-                    "tag1"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Verify different products of swag labs", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 6
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -93,14 +100,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 7
- await testRunner.GivenAsync("Login with valid credentials", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 5
+await this.FeatureBackgroundAsync();
 #line hidden
                 global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
                             "Item",
                             "Price"});
                 table1.AddRow(new string[] {
-                            "Sauce Labs Bike Light 1",
+                            "Sauce Labs Bike Light",
                             "$9.99"});
                 table1.AddRow(new string[] {
                             "Sauce Labs Backpack",
@@ -117,8 +124,66 @@ this.ScenarioInitialize(scenarioInfo);
                 table1.AddRow(new string[] {
                             "Test.allTheThings() T-Shirt (Red)",
                             "$15.99"});
-#line 8
+#line 9
   await testRunner.ThenAsync("user verifies swag lab products", ((string)(null)), table1, "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify Cart count")]
+        public async System.Threading.Tasks.Task VerifyCartCount()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Verify Cart count", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 18
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 5
+await this.FeatureBackgroundAsync();
+#line hidden
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                            "Items"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Backpack"});
+                table2.AddRow(new string[] {
+                            "Sauce Labs Fleece Jacket"});
+#line 19
+ await testRunner.WhenAsync("User cart items from product list to cart", ((string)(null)), table2, "When ");
+#line hidden
+#line 23
+ await testRunner.ThenAsync("User checks count in cart of selected items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                            "Items"});
+                table3.AddRow(new string[] {
+                            "Sauce Labs Backpack"});
+                table3.AddRow(new string[] {
+                            "Sauce Labs Fleece Jacket"});
+#line 24
+ await testRunner.WhenAsync("User uncart items from product list", ((string)(null)), table3, "When ");
+#line hidden
+#line 28
+ await testRunner.ThenAsync("user verifies no item in cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+                global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
+                            "Items"});
+                table4.AddRow(new string[] {
+                            "Sauce Labs Backpack"});
+#line 29
+ await testRunner.WhenAsync("User cart items from product list to cart", ((string)(null)), table4, "When ");
+#line hidden
+#line 32
+ await testRunner.ThenAsync("User checks count in cart of selected items", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
