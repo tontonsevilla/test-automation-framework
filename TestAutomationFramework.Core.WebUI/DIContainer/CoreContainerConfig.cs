@@ -4,7 +4,7 @@ using TestAutomationFramework.Core.WebUI.Abstraction;
 using TestAutomationFramework.Core.WebUI.DriverContext;
 using TestAutomationFramework.Core.WebUI.Params;
 using TestAutomationFramework.Core.WebUI.Reports;
-using TestAutomationFramework.Core.WebUI.Selenium.LocalWebDrivers;
+using TestAutomationFramework.Core.WebUI.Selenium.WebDrivers;
 using TestAutomationFramework.Core.WebUI.WebElements;
 
 namespace TestAutomationFramework.Core.WebUI.DIContainer

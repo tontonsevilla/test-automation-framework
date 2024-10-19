@@ -4,8 +4,10 @@ using TestAutomationFramework.Core.WebUI.Abstraction;
 using TestAutomationFramework.Core.WebUI.Runner;
 using WebDriverManager.DriverConfigs.Impl;
 using Microsoft.Extensions.DependencyInjection;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 
-namespace TestAutomationFramework.Core.WebUI.Selenium.LocalWebDrivers
+namespace TestAutomationFramework.Core.WebUI.Selenium.WebDrivers
 {
     public class FirefoxWebDriver : IFirefoxWebDriver
     {
@@ -19,9 +21,17 @@ namespace TestAutomationFramework.Core.WebUI.Selenium.LocalWebDrivers
         {
             IWebDriver webDriver;
 
-            new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig());
-            webDriver = new FirefoxDriver(GetOptions());
-            webDriver.Manage().Window.Maximize();
+            if (string.IsNullOrWhiteSpace(_globalProperties.gridhuburl))
+            {
+                new WebDriverManager.DriverManager().SetUpDriver(new FirefoxConfig());
+                webDriver = new FirefoxDriver(GetOptions());
+
+                webDriver.Manage().Window.Maximize();
+            }
+            else
+            {
+                webDriver = new RemoteWebDriver(new Uri(_globalProperties.gridhuburl), GetOptions());
+            }
 
             return webDriver;
         }

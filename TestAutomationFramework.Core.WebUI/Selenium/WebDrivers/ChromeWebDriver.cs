@@ -1,11 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using TestAutomationFramework.Core.WebUI.Abstraction;
 using TestAutomationFramework.Core.WebUI.Runner;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace TestAutomationFramework.Core.WebUI.Selenium.LocalWebDrivers
+namespace TestAutomationFramework.Core.WebUI.Selenium.WebDrivers
 {
     public class ChromeWebDriver : IChromeWebDriver
     {
@@ -18,10 +19,19 @@ namespace TestAutomationFramework.Core.WebUI.Selenium.LocalWebDrivers
 
         public IWebDriver GetChromeWebDriver()
         {
-            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
-            IWebDriver webDriver = new ChromeDriver(GetOptions());
+            IWebDriver webDriver;
 
-            webDriver.Manage().Window.Maximize();
+            if (string.IsNullOrWhiteSpace(_globalProperties.gridhuburl))
+            {
+                new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
+                webDriver = new ChromeDriver(GetOptions());
+
+                webDriver.Manage().Window.Maximize();
+            }
+            else
+            {
+                webDriver = new RemoteWebDriver(new Uri(_globalProperties.gridhuburl), GetOptions());
+            }
 
             return webDriver;
         }
